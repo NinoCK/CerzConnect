@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CerzConnect: compact media controls shown from the touchpad's music button -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/player"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="start|center_vertical"
+        android:maxLines="1"
+        app:icon="@drawable/ic_arrow_drop_down_24px"
+        app:iconGravity="end" />
+
+    <TextView
+        android:id="@+id/no_players"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="@string/no_players_connected"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <LinearLayout
+            android:id="@+id/seek_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:labelBehavior="gone" />
+
+            <TextView
+                android:id="@+id/length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prev"
+                style="@style/CerzIconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/mpris_previous"
+                app:icon="@drawable/ic_previous_black" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play"
+                style="@style/CerzIconButton.Filled"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginHorizontal="16dp"
+                android:contentDescription="@string/mpris_play"
+                app:icon="@drawable/ic_play_black"
+                app:iconSize="28dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next"
+                style="@style/CerzIconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/mpris_next"
+                app:icon="@drawable/ic_next_black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/volume_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_volume"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/volume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/mpris_volume"
+                android:stepSize="1"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:labelBehavior="gone"
+                app:tickVisibilityMode="hidden" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

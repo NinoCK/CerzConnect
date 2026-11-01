@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+SPDX-FileCopyrightText: 2014 Ahmed I. Khalil <ahmedibrahimkhali@gmail.com>
+
+SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+-->
+
+<!-- CerzConnect: landscape remote input. Touchpad on one side (30%), keyboard on the other (70%). -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context="org.kde.kdeconnect.ui.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/mousepad_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Collapsing hides touchpad_area and turns top_buttons into a column -->
+        <LinearLayout
+            android:id="@+id/side_panel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_marginEnd="6dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/top_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/cerz_space"
+                android:orientation="horizontal"
+                android:showDividers="middle">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/open_menu"
+                    style="@style/CerzIconButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/cerz_menu"
+                    app:icon="@drawable/cerz_menu" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/send_clipboard"
+                    style="@style/CerzIconButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/send_clipboard"
+                    app:icon="@drawable/ic_baseline_content_paste_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/media_controls"
+                    style="@style/CerzIconButton.Filled"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/open_mpris_controls"
+                    app:icon="@drawable/cerz_music_note" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/toggle_touchpad"
+                    style="@style/CerzIconButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/cerz_toggle_touchpad"
+                    app:icon="@drawable/cerz_collapse" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/touchpad_area"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/cerz_round"
+                android:backgroundTint="?attr/colorSurfaceContainerHigh"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/touchpad"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/mousepad_info_no_gestures" />
+
+                <!-- Separate views, so a drag that started on the touchpad never presses them -->
+                <LinearLayout
+                    android:id="@+id/mouse_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/mouse_click_left"
+                            style="@style/CerzIconButton.Plain"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/left_click"
+                            app:icon="@drawable/cerz_mouse_left" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/mouse_click_middle"
+                            style="@style/CerzIconButton.Plain"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/middle_click"
+                            app:icon="@drawable/cerz_mouse_middle" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/mouse_click_right"
+                            style="@style/CerzIconButton.Plain"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/right_click"
+                            app:icon="@drawable/cerz_mouse_right" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Rows of keys are added by KeyboardView -->
+        <org.kde.kdeconnect.plugins.mousepad.KeyboardView
+            android:id="@+id/keyboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
