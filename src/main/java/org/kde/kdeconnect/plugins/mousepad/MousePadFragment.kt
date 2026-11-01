@@ -36,6 +36,8 @@ import org.kde.kdeconnect.base.BaseFragment
 import org.kde.kdeconnect.extensions.getSafeDrawInsets
 import org.kde.kdeconnect.extensions.setOnApplyWindowInsetsListenerCompat
 import org.kde.kdeconnect.ui.compose.components.addDeviceDisconnectedOverlay
+import org.kde.kdeconnect.plugins.Plugin
+import org.kde.kdeconnect.plugins.applauncher.AppLauncherPlugin
 import org.kde.kdeconnect.plugins.clipboard.ClipboardPlugin
 import org.kde.kdeconnect.plugins.mpris.MprisPlugin
 import org.kde.kdeconnect.ui.MainActivity
@@ -73,6 +75,7 @@ class MousePadFragment :
     private var accumulatedDistanceX: Double = 0.0
     private var accumulatedDistanceY: Double = 0.0
     private var mediaPopup: MediaPopup? = null
+    private var appDrawerPopup: AppDrawerPopup? = null
     private var touchpadRight: Boolean = false
     private var touchpadCollapsed: Boolean = false
     private var wheelY: Float = 0f
@@ -177,6 +180,18 @@ class MousePadFragment :
             }
             mediaPopup = MediaPopup(requireActivity(), mpris).also { it.show(anchor) }
         }
+        binding.appDrawer.setOnClickListener { anchor ->
+            val launcher = device.getPlugin<AppLauncherPlugin>() ?: run {
+                // Turned off here, or the PC doesn't offer it at all
+                if (Plugin.getPluginKey(AppLauncherPlugin::class.java) in device.supportedPlugins) {
+                    pluginOffToast(R.string.pref_plugin_applauncher)
+                } else {
+                    Toast.makeText(requireContext(), R.string.cerz_app_launcher_missing, Toast.LENGTH_LONG).show()
+                }
+                return@setOnClickListener
+            }
+            appDrawerPopup = AppDrawerPopup(requireActivity(), launcher).also { it.show(anchor) }
+        }
 
         mDetector = GestureDetector(requireContext(), this)
         mMousePadGestureDetector = MousePadGestureDetector(this)
@@ -226,6 +241,7 @@ class MousePadFragment :
 
     override fun onDestroyView() {
         mediaPopup?.dismiss()
+        appDrawerPopup?.dismiss()
         if (::prefs.isInitialized) {
             prefs.unregisterOnSharedPreferenceChangeListener(this)
         }

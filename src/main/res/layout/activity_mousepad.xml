@@ -66,6 +66,14 @@ SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted
                     app:icon="@drawable/cerz_music_note" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/app_drawer"
+                    style="@style/CerzIconButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/cerz_app_drawer"
+                    app:icon="@drawable/cerz_apps" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/toggle_touchpad"
                     style="@style/CerzIconButton"
                     android:layout_width="40dp"

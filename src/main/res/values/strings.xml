@@ -18,6 +18,12 @@ SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted
     <string name="cerz_permissions">Permissions</string>
     <string name="cerz_menu">Menu</string>
     <string name="cerz_toggle_touchpad">Show or hide the touchpad</string>
+    <string name="cerz_app_drawer">Apps on the PC</string>
+    <string name="cerz_app_search">Search apps</string>
+    <string name="cerz_apps_loading">Getting the apps from the PC…</string>
+    <string name="cerz_apps_none">No apps found</string>
+    <string name="cerz_app_launch_failed">Couldn\'t open %s on the PC</string>
+    <string name="cerz_app_launcher_missing">The PC doesn\'t offer an app launcher. Install the GSConnect build with the App Launcher plugin.</string>
     <string name="cerz_touchpad_right_pref" translatable="false">cerz_touchpad_right</string>
     <string name="cerz_touchpad_collapsed_pref" translatable="false">cerz_touchpad_collapsed</string>
     <string name="cerz_touchpad_right">Swap touchpad and keyboard</string>
@@ -54,6 +60,8 @@ SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted
     <string name="pref_plugin_mpris_desc">Provides a remote control for your media player</string>
     <string name="pref_plugin_runcommand">Run Command</string>
     <string name="pref_plugin_runcommand_desc">Trigger remote commands from your phone or tablet</string>
+    <string name="pref_plugin_applauncher">App Launcher</string>
+    <string name="pref_plugin_applauncher_desc">Browse and open the apps installed on the PC</string>
     <string name="pref_plugin_contacts">Contacts Synchronizer</string>
     <string name="pref_plugin_contacts_desc">Allow synchronizing the device\'s contacts book</string>
     <string name="pref_plugin_ping">Ping</string>
